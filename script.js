@@ -1,4 +1,3 @@
-// Website template by https://github.com/Pathetic420
 document.addEventListener('DOMContentLoaded', function() {
     var clickToEnter = document.getElementById('click-to-enter');
     var background = document.querySelector('.background');

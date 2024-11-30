@@ -8,23 +8,23 @@ document.addEventListener('DOMContentLoaded', function() {
     clickToEnter.addEventListener('click', function() {
         clickToEnter.style.display = 'none';
         background.style.display = 'block';
-        startPlayback();
     });
 
     const startPlayback = () => {
-        if (video) {
-            video.play();
-        }
+        if (video) video.play();
         const playPromise = audio.play();
         if (playPromise !== undefined) {
             playPromise.then(() => {
                 audio.loop = true;
                 audio.volume = 0.2;
+                document.removeEventListener('click', startPlayback);
             }).catch(error => {
                 console.log('Autoplay was prevented:', error);
             });
         }
     };
+
+    document.addEventListener('click', startPlayback);
 
     muteButton.addEventListener('click', () => {
         if (audio.paused) {
